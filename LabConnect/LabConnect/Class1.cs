@@ -90,14 +90,14 @@ namespace LabConnect
             //block1=lsb --> block4 = msb
             byte block1, block2, block3, block4;
 
-            block1 = Convert.ToByte(f_regwert);
+            block1 = Convert.ToByte(f_regwert & 0xFF);
             f_regwert = f_regwert >> 8;
-            block2 = Convert.ToByte(f_regwert);
+            block2 = Convert.ToByte(f_regwert & 0xFF);
             block2 = Convert.ToByte((block2 | 0x40) & (~0x80));
             f_regwert = f_regwert >> 6;
-            block3 = Convert.ToByte(f_regwert);
+            block3 = Convert.ToByte(f_regwert & 0xFF);
             f_regwert = f_regwert >> 8;
-            block4 = Convert.ToByte(f_regwert);
+            block4 = Convert.ToByte(f_regwert & 0xFF);
             block4 = Convert.ToByte((block4 | 0x40) & (~0x80));
             
             if (rechteck == true)
