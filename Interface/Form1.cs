@@ -57,5 +57,11 @@ namespace Interface
         {
             Signalgenerator.SetFrequency(Convert.ToInt32(frequenz_show.Value));
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            frequenz_show.Increment = Convert.ToInt32(comboBox1.Text);
+        }
+
     }
 }

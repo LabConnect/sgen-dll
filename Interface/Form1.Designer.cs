@@ -35,6 +35,9 @@
             this.frequenz_show = new System.Windows.Forms.NumericUpDown();
             this.manuell_frequenz = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.frequenz_show)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +45,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 35);
+            this.label1.Location = new System.Drawing.Point(7, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 25);
             this.label1.TabIndex = 1;
@@ -55,7 +58,7 @@
             "Hz",
             "kHz",
             "MHz"});
-            this.manuell_multi.Location = new System.Drawing.Point(109, 134);
+            this.manuell_multi.Location = new System.Drawing.Point(104, 119);
             this.manuell_multi.Name = "manuell_multi";
             this.manuell_multi.Size = new System.Drawing.Size(45, 21);
             this.manuell_multi.TabIndex = 2;
@@ -63,17 +66,28 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(79, 233);
+            this.comboBox2.Items.AddRange(new object[] {
+            "Sinus",
+            "Dreieck",
+            "Rechteck"});
+            this.comboBox2.Location = new System.Drawing.Point(132, 167);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.Size = new System.Drawing.Size(94, 24);
             this.comboBox2.TabIndex = 3;
+            this.comboBox2.Text = "Sinus";
             // 
             // frequenz_show
             // 
             this.frequenz_show.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frequenz_show.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.frequenz_show.Location = new System.Drawing.Point(17, 63);
+            this.frequenz_show.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.frequenz_show.Location = new System.Drawing.Point(12, 48);
             this.frequenz_show.Maximum = new decimal(new int[] {
             12500000,
             0,
@@ -85,7 +99,7 @@
             this.frequenz_show.Size = new System.Drawing.Size(241, 66);
             this.frequenz_show.TabIndex = 4;
             this.frequenz_show.Value = new decimal(new int[] {
-            10111000,
+            1750,
             0,
             0,
             0});
@@ -93,14 +107,14 @@
             // 
             // manuell_frequenz
             // 
-            this.manuell_frequenz.Location = new System.Drawing.Point(17, 135);
+            this.manuell_frequenz.Location = new System.Drawing.Point(12, 120);
             this.manuell_frequenz.Name = "manuell_frequenz";
             this.manuell_frequenz.Size = new System.Drawing.Size(86, 20);
             this.manuell_frequenz.TabIndex = 5;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(160, 132);
+            this.button1.Location = new System.Drawing.Point(155, 117);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 23);
             this.button1.TabIndex = 6;
@@ -108,11 +122,56 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 163);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 25);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Signalform";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(154, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 16);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Step";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "5",
+            "10",
+            "50",
+            "100",
+            "500",
+            "1000",
+            "5000",
+            "10000",
+            "50000",
+            "100000"});
+            this.comboBox1.Location = new System.Drawing.Point(192, 26);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(61, 21);
+            this.comboBox1.TabIndex = 9;
+            this.comboBox1.Text = "1000";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 284);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.manuell_frequenz);
             this.Controls.Add(this.frequenz_show);
@@ -136,6 +195,9 @@
         private System.Windows.Forms.TextBox manuell_frequenz;
         private System.Windows.Forms.ComboBox manuell_multi;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
