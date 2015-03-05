@@ -8,15 +8,15 @@ namespace LabConnect
 {
     public class USB
     {
-
+        
     }
 
     public class Sgen
     {
         //definition der klassenvariablen
-        byte[] output_data = {0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x01};
+        
         bool rechteck = false;
-
+        public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x01 };
         //registerwerte für die Digipotis für die Ausgangsspannung berechnen
         public void RegwertUout(int u_amplitude)
         {
