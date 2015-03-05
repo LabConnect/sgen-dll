@@ -8,6 +8,7 @@ namespace LabConnect
 {
     public class USB
     {
+
     }
 
     public class Sgen
@@ -17,7 +18,7 @@ namespace LabConnect
         bool rechteck = false;
 
         //registerwerte für die Digipotis für die Ausgangsspannung berechnen
-        void RegwertUout(int u_amplitude)
+        public void RegwertUout(int u_amplitude)
         {
             float umax = 12, bits = 510;
             int register1, register2;
@@ -42,7 +43,7 @@ namespace LabConnect
         }
 
         //Registerwerte für die offsetspannung berechnen
-        void RegwertOffset(int u_offset)
+        public void RegwertOffset(int u_offset)
         {
             float uges = 12, bits = 510;
             int register1, register2;
@@ -67,7 +68,7 @@ namespace LabConnect
         }
 
         //zwischen Rechteck und Sinus/Dreieck unterscheiden
-        void SetWaveform(int form)
+        public void SetWaveform(int form)
         {
             if (form == 2)
             {
@@ -81,7 +82,7 @@ namespace LabConnect
         }
 
         //Frequenzregister des AD9833 berechnen
-        void SetFrequency(int frequenz)
+        public void SetFrequency(int frequenz)
         {
             float mclk = 25000000, register_size = 268435456;
             float teiler = mclk / register_size;

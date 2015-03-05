@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabConnect", "LabConnect\LabConnect.csproj", "{1D1DFB80-AE5D-4266-B947-02AE1B7A7258}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{9ABE0DCC-F96E-4622-8AEA-315D6BF6BC4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1D1DFB80-AE5D-4266-B947-02AE1B7A7258}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D1DFB80-AE5D-4266-B947-02AE1B7A7258}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D1DFB80-AE5D-4266-B947-02AE1B7A7258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ABE0DCC-F96E-4622-8AEA-315D6BF6BC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ABE0DCC-F96E-4622-8AEA-315D6BF6BC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ABE0DCC-F96E-4622-8AEA-315D6BF6BC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ABE0DCC-F96E-4622-8AEA-315D6BF6BC4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
