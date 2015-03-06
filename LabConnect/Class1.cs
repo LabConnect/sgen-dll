@@ -18,37 +18,37 @@ namespace LabConnect
         bool rechteck = false;
         public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x01 };
         //registerwerte für die Digipotis für die Ausgangsspannung berechnen
-        public void RegwertUout(int u_amplitude)
+        public double RegwertUout(double u_amplitude)
         {
-            float umax = 12, bits = 510;
+            double umax = 12, bits = 510;
             int register1, register2;
             //berechnen des gesamtwertes
-            int ergebnis = (u_amplitude / Convert.ToInt32(umax / bits));
+             double ergebnis = u_amplitude / (umax / bits);
             //prüfen ob grade und auf register aufteilen
-            if (ergebnis%2==0)
+            if (ergebnis%2 == 0)
             {
-                register1 = 255 - (ergebnis / 2);
-                register2 = 255 - (ergebnis / 2);
+                register1 = Convert.ToInt32(255 - (ergebnis / 2));
+                register2 = Convert.ToInt32(255 - (ergebnis / 2));
             }
             else
             {
                 ergebnis = ergebnis - 1;
-                register1 = 255 - ((ergebnis / 2) + 1);
-                register2 = 255 - (ergebnis / 2);
+                register1 = Convert.ToInt32(255 - ((ergebnis / 2) + 1));
+                register2 = Convert.ToInt32(255 - (ergebnis / 2));
             }
 
             output_data[6] = Convert.ToByte(register1);
             output_data[7] = Convert.ToByte(register2);
-            return;
+            return ergebnis;
         }
 
         //Registerwerte für die offsetspannung berechnen
-        public void RegwertOffset(int u_offset)
+        public void RegwertOffset(double u_offset)
         {
             float uges = 12, bits = 510;
             int register1, register2;
 
-            int ergebnis = ((u_offset + 6) / Convert.ToInt32(uges / bits));
+            int ergebnis = Convert.ToInt32((u_offset + 6) / (uges / bits));
 
             if (ergebnis%2 == 0)
             {
@@ -85,6 +85,11 @@ namespace LabConnect
 
             output_data[0] = creg_base_msb;
             output_data[1] = Convert.ToByte(Convert.ToInt32(creg_wf & 0x29) | creg_base_lsb);
+            
+            if (rechteck == true)
+            {
+                output_data[10] = 3;
+            }
             
             return;
         }

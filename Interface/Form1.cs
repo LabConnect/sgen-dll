@@ -68,5 +68,25 @@ namespace Interface
             Signalgenerator.SetWaveform(waveformbox.SelectedIndex);
             
         }
+
+        private void vss_box_ValueChanged(object sender, EventArgs e)
+        {
+            double test = Signalgenerator.RegwertUout(Convert.ToInt32(vss_box.Value));
+            label8.Text = Convert.ToString(test);
+        }
+
+        private void voffset_box_ValueChanged(object sender, EventArgs e)
+        {
+            Signalgenerator.RegwertOffset(Convert.ToDouble(voffset_box.Value));
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            int i = Convert.ToInt32(numericUpDown1.Value);
+            label8.Text = Convert.ToString(Signalgenerator.output_data[i]);
+        }
+
+
+        
     }
 }
