@@ -63,5 +63,10 @@ namespace Interface
             frequenz_show.Increment = Convert.ToInt32(comboBox1.Text);
         }
 
+        private void waveformbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Signalgenerator.SetWaveform(waveformbox.SelectedIndex);
+            
+        }
     }
 }

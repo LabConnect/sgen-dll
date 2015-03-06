@@ -67,17 +67,25 @@ namespace LabConnect
             return;
         }
 
-        //zwischen Rechteck und Sinus/Dreieck unterscheiden
+        //Signalform setzen
         public void SetWaveform(int form)
         {
-            if (form == 2)
+            //0=sinus
+            //1=dreieck
+            //2=rechteck
+            byte creg_wf, creg_base_msb = 0x20, creg_base_lsb = 0x00;
+            
+            switch (form)
             {
-                rechteck = true;
+                case 0: creg_wf = 0x00; rechteck = false; break;
+                case 1: creg_wf = 0x02; rechteck = false; break;
+                case 2: creg_wf = 0x28; rechteck = true;  break;
+                default: creg_wf = 0x00; rechteck = false; break;
             }
-            else
-            {
-                rechteck = false;
-            }
+
+            output_data[0] = creg_base_msb;
+            output_data[1] = Convert.ToByte(Convert.ToInt32(creg_wf & 0x29) | creg_base_lsb);
+            
             return;
         }
 

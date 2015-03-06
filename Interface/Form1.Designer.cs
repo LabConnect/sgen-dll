@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.manuell_multi = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.waveformbox = new System.Windows.Forms.ComboBox();
             this.frequenz_show = new System.Windows.Forms.NumericUpDown();
             this.manuell_frequenz = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -64,19 +64,20 @@
             this.manuell_multi.TabIndex = 2;
             this.manuell_multi.Text = "kHz";
             // 
-            // comboBox2
+            // waveformbox
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.waveformbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.waveformbox.FormattingEnabled = true;
+            this.waveformbox.Items.AddRange(new object[] {
             "Sinus",
             "Dreieck",
             "Rechteck"});
-            this.comboBox2.Location = new System.Drawing.Point(132, 167);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(94, 24);
-            this.comboBox2.TabIndex = 3;
-            this.comboBox2.Text = "Sinus";
+            this.waveformbox.Location = new System.Drawing.Point(132, 167);
+            this.waveformbox.Name = "waveformbox";
+            this.waveformbox.Size = new System.Drawing.Size(94, 24);
+            this.waveformbox.TabIndex = 3;
+            this.waveformbox.Text = "Sinus";
+            this.waveformbox.SelectedIndexChanged += new System.EventHandler(this.waveformbox_SelectedIndexChanged);
             // 
             // frequenz_show
             // 
@@ -175,7 +176,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.manuell_frequenz);
             this.Controls.Add(this.frequenz_show);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.waveformbox);
             this.Controls.Add(this.manuell_multi);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -190,7 +191,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox waveformbox;
         private System.Windows.Forms.NumericUpDown frequenz_show;
         private System.Windows.Forms.TextBox manuell_frequenz;
         private System.Windows.Forms.ComboBox manuell_multi;
