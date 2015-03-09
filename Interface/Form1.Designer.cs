@@ -57,6 +57,10 @@
             this.ergebnis8 = new System.Windows.Forms.Label();
             this.ergebnis9 = new System.Windows.Forms.Label();
             this.ergebnis10 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.ergebnis11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.frequenz_show)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vss_box)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.voffset_box)).BeginInit();
@@ -289,7 +293,7 @@
             // ergebnis0
             // 
             this.ergebnis0.AutoSize = true;
-            this.ergebnis0.Location = new System.Drawing.Point(343, 22);
+            this.ergebnis0.Location = new System.Drawing.Point(341, 13);
             this.ergebnis0.Name = "ergebnis0";
             this.ergebnis0.Size = new System.Drawing.Size(53, 13);
             this.ergebnis0.TabIndex = 16;
@@ -298,7 +302,7 @@
             // ergebnis1
             // 
             this.ergebnis1.AutoSize = true;
-            this.ergebnis1.Location = new System.Drawing.Point(343, 36);
+            this.ergebnis1.Location = new System.Drawing.Point(341, 27);
             this.ergebnis1.Name = "ergebnis1";
             this.ergebnis1.Size = new System.Drawing.Size(53, 13);
             this.ergebnis1.TabIndex = 17;
@@ -307,7 +311,7 @@
             // ergebnis2
             // 
             this.ergebnis2.AutoSize = true;
-            this.ergebnis2.Location = new System.Drawing.Point(343, 74);
+            this.ergebnis2.Location = new System.Drawing.Point(341, 65);
             this.ergebnis2.Name = "ergebnis2";
             this.ergebnis2.Size = new System.Drawing.Size(53, 13);
             this.ergebnis2.TabIndex = 18;
@@ -316,7 +320,7 @@
             // ergebnis3
             // 
             this.ergebnis3.AutoSize = true;
-            this.ergebnis3.Location = new System.Drawing.Point(343, 89);
+            this.ergebnis3.Location = new System.Drawing.Point(341, 80);
             this.ergebnis3.Name = "ergebnis3";
             this.ergebnis3.Size = new System.Drawing.Size(53, 13);
             this.ergebnis3.TabIndex = 19;
@@ -325,7 +329,7 @@
             // ergebnis4
             // 
             this.ergebnis4.AutoSize = true;
-            this.ergebnis4.Location = new System.Drawing.Point(343, 102);
+            this.ergebnis4.Location = new System.Drawing.Point(341, 93);
             this.ergebnis4.Name = "ergebnis4";
             this.ergebnis4.Size = new System.Drawing.Size(53, 13);
             this.ergebnis4.TabIndex = 20;
@@ -334,7 +338,7 @@
             // ergebnis5
             // 
             this.ergebnis5.AutoSize = true;
-            this.ergebnis5.Location = new System.Drawing.Point(343, 115);
+            this.ergebnis5.Location = new System.Drawing.Point(341, 106);
             this.ergebnis5.Name = "ergebnis5";
             this.ergebnis5.Size = new System.Drawing.Size(53, 13);
             this.ergebnis5.TabIndex = 21;
@@ -343,7 +347,7 @@
             // ergebnis6
             // 
             this.ergebnis6.AutoSize = true;
-            this.ergebnis6.Location = new System.Drawing.Point(343, 141);
+            this.ergebnis6.Location = new System.Drawing.Point(341, 132);
             this.ergebnis6.Name = "ergebnis6";
             this.ergebnis6.Size = new System.Drawing.Size(53, 13);
             this.ergebnis6.TabIndex = 22;
@@ -352,7 +356,7 @@
             // ergebnis7
             // 
             this.ergebnis7.AutoSize = true;
-            this.ergebnis7.Location = new System.Drawing.Point(343, 156);
+            this.ergebnis7.Location = new System.Drawing.Point(341, 147);
             this.ergebnis7.Name = "ergebnis7";
             this.ergebnis7.Size = new System.Drawing.Size(53, 13);
             this.ergebnis7.TabIndex = 23;
@@ -361,7 +365,7 @@
             // ergebnis8
             // 
             this.ergebnis8.AutoSize = true;
-            this.ergebnis8.Location = new System.Drawing.Point(343, 186);
+            this.ergebnis8.Location = new System.Drawing.Point(341, 177);
             this.ergebnis8.Name = "ergebnis8";
             this.ergebnis8.Size = new System.Drawing.Size(53, 13);
             this.ergebnis8.TabIndex = 24;
@@ -370,7 +374,7 @@
             // ergebnis9
             // 
             this.ergebnis9.AutoSize = true;
-            this.ergebnis9.Location = new System.Drawing.Point(343, 199);
+            this.ergebnis9.Location = new System.Drawing.Point(341, 190);
             this.ergebnis9.Name = "ergebnis9";
             this.ergebnis9.Size = new System.Drawing.Size(53, 13);
             this.ergebnis9.TabIndex = 25;
@@ -379,17 +383,62 @@
             // ergebnis10
             // 
             this.ergebnis10.AutoSize = true;
-            this.ergebnis10.Location = new System.Drawing.Point(343, 230);
+            this.ergebnis10.Location = new System.Drawing.Point(341, 221);
             this.ergebnis10.Name = "ergebnis10";
             this.ergebnis10.Size = new System.Drawing.Size(59, 13);
             this.ergebnis10.TabIndex = 26;
             this.ergebnis10.Text = "ergebnis10";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(169, 249);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(104, 23);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "Daten übertragen";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(12, 233);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(133, 17);
+            this.checkBox1.TabIndex = 28;
+            this.checkBox1.Text = "Daten beim boot laden";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(12, 253);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(151, 17);
+            this.checkBox2.TabIndex = 29;
+            this.checkBox2.Text = "Daten auf Gerät speichern";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // ergebnis11
+            // 
+            this.ergebnis11.AutoSize = true;
+            this.ergebnis11.Location = new System.Drawing.Point(341, 242);
+            this.ergebnis11.Name = "ergebnis11";
+            this.ergebnis11.Size = new System.Drawing.Size(59, 13);
+            this.ergebnis11.TabIndex = 30;
+            this.ergebnis11.Text = "ergebnis11";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 284);
+            this.ClientSize = new System.Drawing.Size(288, 284);
+            this.Controls.Add(this.ergebnis11);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.ergebnis10);
             this.Controls.Add(this.ergebnis9);
             this.Controls.Add(this.ergebnis8);
@@ -419,6 +468,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "LabConnect Interface ©2015 Hendrik Lüth";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.frequenz_show)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vss_box)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.voffset_box)).EndInit();
@@ -456,6 +506,10 @@
         private System.Windows.Forms.Label ergebnis8;
         private System.Windows.Forms.Label ergebnis9;
         private System.Windows.Forms.Label ergebnis10;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Label ergebnis11;
     }
 }
 

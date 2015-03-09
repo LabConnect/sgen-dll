@@ -17,8 +17,45 @@ namespace LabConnect
         
         bool rechteck = false;
         int frequenz = 1750;
-        public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x02 };
+        public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x02, 0x01 };
         //registerwerte für die Digipotis für die Ausgangsspannung berechnen
+        
+        public bool GetBootLoad()
+        {
+            bool config = false;
+            if ((output_data[11] & 0xF0) == 0x10)
+            {
+                config = true;
+            }
+
+            return config;
+        }
+
+        public void BootData(bool save_data, bool load_data_at_boot)
+        {
+            byte save, load;
+            if (save_data == true)
+            {
+                save = 0x01;
+            }
+            else
+            {
+                save = 0x00;
+            }
+
+            if (load_data_at_boot == true)
+            {
+                load = 0x10;
+            }
+            else
+            {
+                load = 0x00;
+            }
+
+            output_data[11] = Convert.ToByte(load | save);
+            return;
+        }
+        
         public void RegwertUout(int u_amplitude_mv)
         {
             int umax = 12000, bits = 510;

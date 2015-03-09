@@ -92,6 +92,27 @@ namespace Interface
             ergebnis8.Text = Convert.ToString(Signalgenerator.output_data[8]);
             ergebnis9.Text = Convert.ToString(Signalgenerator.output_data[9]);
             ergebnis10.Text = Convert.ToString(Signalgenerator.output_data[10]);
+            ergebnis11.Text = Convert.ToString(Signalgenerator.output_data[11]);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Signalgenerator.BootData(true, true);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            checkBox1.Checked = Signalgenerator.GetBootLoad();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Signalgenerator.BootData(checkBox2.Checked, checkBox1.Checked);
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            Signalgenerator.BootData(checkBox2.Checked, checkBox1.Checked);
         }
 
 
