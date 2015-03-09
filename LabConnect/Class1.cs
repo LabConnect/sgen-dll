@@ -16,7 +16,8 @@ namespace LabConnect
         //definition der klassenvariablen
         
         bool rechteck = false;
-        public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x01 };
+        int frequenz = 1750;
+        public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x02 };
         //registerwerte für die Digipotis für die Ausgangsspannung berechnen
         public void RegwertUout(int u_amplitude_mv)
         {
@@ -89,23 +90,19 @@ namespace LabConnect
             }
 
             output_data[0] = creg_base_msb;
-            output_data[1] = Convert.ToByte(Convert.ToInt32(creg_wf & 0x29) | creg_base_lsb);
-            
-            if (rechteck == true)
-            {
-                output_data[10] = 3;
-            }
-            
+            output_data[1] = Convert.ToByte(Convert.ToInt32(creg_wf) | creg_base_lsb);
+
+            SetFilter();            
             return;
         }
 
         //Frequenzregister des AD9833 berechnen
-        public void SetFrequency(int frequenz)
+        public void SetFrequency(int frequenz_local)
         {
             float mclk = 25000000, register_size = 268435456;
             float teiler = mclk / register_size;
-            int f_regwert = Convert.ToInt32(frequenz / teiler);
-            
+            int f_regwert = Convert.ToInt32(frequenz_local / teiler);
+            frequenz = frequenz_local;
             //block1=lsb --> block4 = msb
             byte block1, block2, block3, block4;
 
@@ -118,7 +115,25 @@ namespace LabConnect
             f_regwert = f_regwert >> 8;
             block4 = Convert.ToByte(f_regwert & 0xFF);
             block4 = Convert.ToByte((block4 | 0x40) & (~0x80));
-            
+
+            output_data[2] = block1;
+            output_data[3] = block2;
+            output_data[4] = block3;
+            output_data[5] = block4;
+
+            SetFilter();
+        }
+        
+        //Daten senden
+        void CommitData()
+        {
+            //this is where we call the usbfunction
+            return;
+        }
+
+        //setze den Wert für den analogmultiplexer
+        void SetFilter()
+        {
             if (rechteck == true)
             {
                 output_data[10] = 3;
@@ -129,7 +144,7 @@ namespace LabConnect
                 {
                     output_data[10] = 3;
                 }
-                else if(frequenz <= 10000)
+                else if (frequenz <= 10000)
                 {
                     output_data[10] = 2;
                 }
@@ -138,13 +153,6 @@ namespace LabConnect
                     output_data[10] = 1;
                 }
             }
-        }
-        
-        //Daten senden
-        void CommitData()
-        {
-            //this is where we call the usbfunction
-            return;
         }
     }
 }
