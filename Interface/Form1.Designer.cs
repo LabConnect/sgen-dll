@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.manuell_multi = new System.Windows.Forms.ComboBox();
@@ -44,12 +45,21 @@
             this.voffset_box = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ergebnis0 = new System.Windows.Forms.Label();
+            this.ergebnis1 = new System.Windows.Forms.Label();
+            this.ergebnis2 = new System.Windows.Forms.Label();
+            this.ergebnis3 = new System.Windows.Forms.Label();
+            this.ergebnis4 = new System.Windows.Forms.Label();
+            this.ergebnis5 = new System.Windows.Forms.Label();
+            this.ergebnis6 = new System.Windows.Forms.Label();
+            this.ergebnis7 = new System.Windows.Forms.Label();
+            this.ergebnis8 = new System.Windows.Forms.Label();
+            this.ergebnis9 = new System.Windows.Forms.Label();
+            this.ergebnis10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.frequenz_show)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vss_box)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.voffset_box)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -204,7 +214,7 @@
             1,
             0,
             0,
-            65536});
+            131072});
             this.vss_box.Location = new System.Drawing.Point(201, 174);
             this.vss_box.Maximum = new decimal(new int[] {
             12,
@@ -271,35 +281,126 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "V";
             // 
-            // numericUpDown1
+            // timer1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(349, 230);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 16;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label8
+            // ergebnis0
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(384, 210);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "label8";
+            this.ergebnis0.AutoSize = true;
+            this.ergebnis0.Location = new System.Drawing.Point(343, 22);
+            this.ergebnis0.Name = "ergebnis0";
+            this.ergebnis0.Size = new System.Drawing.Size(53, 13);
+            this.ergebnis0.TabIndex = 16;
+            this.ergebnis0.Text = "ergebnis0";
+            // 
+            // ergebnis1
+            // 
+            this.ergebnis1.AutoSize = true;
+            this.ergebnis1.Location = new System.Drawing.Point(343, 36);
+            this.ergebnis1.Name = "ergebnis1";
+            this.ergebnis1.Size = new System.Drawing.Size(53, 13);
+            this.ergebnis1.TabIndex = 17;
+            this.ergebnis1.Text = "ergebnis1";
+            // 
+            // ergebnis2
+            // 
+            this.ergebnis2.AutoSize = true;
+            this.ergebnis2.Location = new System.Drawing.Point(343, 74);
+            this.ergebnis2.Name = "ergebnis2";
+            this.ergebnis2.Size = new System.Drawing.Size(53, 13);
+            this.ergebnis2.TabIndex = 18;
+            this.ergebnis2.Text = "ergebnis2";
+            // 
+            // ergebnis3
+            // 
+            this.ergebnis3.AutoSize = true;
+            this.ergebnis3.Location = new System.Drawing.Point(343, 89);
+            this.ergebnis3.Name = "ergebnis3";
+            this.ergebnis3.Size = new System.Drawing.Size(53, 13);
+            this.ergebnis3.TabIndex = 19;
+            this.ergebnis3.Text = "ergebnis3";
+            // 
+            // ergebnis4
+            // 
+            this.ergebnis4.AutoSize = true;
+            this.ergebnis4.Location = new System.Drawing.Point(343, 102);
+            this.ergebnis4.Name = "ergebnis4";
+            this.ergebnis4.Size = new System.Drawing.Size(53, 13);
+            this.ergebnis4.TabIndex = 20;
+            this.ergebnis4.Text = "ergebnis4";
+            // 
+            // ergebnis5
+            // 
+            this.ergebnis5.AutoSize = true;
+            this.ergebnis5.Location = new System.Drawing.Point(343, 115);
+            this.ergebnis5.Name = "ergebnis5";
+            this.ergebnis5.Size = new System.Drawing.Size(53, 13);
+            this.ergebnis5.TabIndex = 21;
+            this.ergebnis5.Text = "ergebnis5";
+            // 
+            // ergebnis6
+            // 
+            this.ergebnis6.AutoSize = true;
+            this.ergebnis6.Location = new System.Drawing.Point(343, 141);
+            this.ergebnis6.Name = "ergebnis6";
+            this.ergebnis6.Size = new System.Drawing.Size(53, 13);
+            this.ergebnis6.TabIndex = 22;
+            this.ergebnis6.Text = "ergebnis6";
+            // 
+            // ergebnis7
+            // 
+            this.ergebnis7.AutoSize = true;
+            this.ergebnis7.Location = new System.Drawing.Point(343, 156);
+            this.ergebnis7.Name = "ergebnis7";
+            this.ergebnis7.Size = new System.Drawing.Size(53, 13);
+            this.ergebnis7.TabIndex = 23;
+            this.ergebnis7.Text = "ergebnis7";
+            // 
+            // ergebnis8
+            // 
+            this.ergebnis8.AutoSize = true;
+            this.ergebnis8.Location = new System.Drawing.Point(343, 186);
+            this.ergebnis8.Name = "ergebnis8";
+            this.ergebnis8.Size = new System.Drawing.Size(53, 13);
+            this.ergebnis8.TabIndex = 24;
+            this.ergebnis8.Text = "ergebnis8";
+            // 
+            // ergebnis9
+            // 
+            this.ergebnis9.AutoSize = true;
+            this.ergebnis9.Location = new System.Drawing.Point(343, 199);
+            this.ergebnis9.Name = "ergebnis9";
+            this.ergebnis9.Size = new System.Drawing.Size(53, 13);
+            this.ergebnis9.TabIndex = 25;
+            this.ergebnis9.Text = "ergebnis9";
+            // 
+            // ergebnis10
+            // 
+            this.ergebnis10.AutoSize = true;
+            this.ergebnis10.Location = new System.Drawing.Point(343, 230);
+            this.ergebnis10.Name = "ergebnis10";
+            this.ergebnis10.Size = new System.Drawing.Size(59, 13);
+            this.ergebnis10.TabIndex = 26;
+            this.ergebnis10.Text = "ergebnis10";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 284);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.ergebnis10);
+            this.Controls.Add(this.ergebnis9);
+            this.Controls.Add(this.ergebnis8);
+            this.Controls.Add(this.ergebnis7);
+            this.Controls.Add(this.ergebnis6);
+            this.Controls.Add(this.ergebnis5);
+            this.Controls.Add(this.ergebnis4);
+            this.Controls.Add(this.ergebnis3);
+            this.Controls.Add(this.ergebnis2);
+            this.Controls.Add(this.ergebnis1);
+            this.Controls.Add(this.ergebnis0);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.voffset_box);
@@ -321,7 +422,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.frequenz_show)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vss_box)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.voffset_box)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,8 +444,18 @@
         private System.Windows.Forms.NumericUpDown voffset_box;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label ergebnis0;
+        private System.Windows.Forms.Label ergebnis1;
+        private System.Windows.Forms.Label ergebnis2;
+        private System.Windows.Forms.Label ergebnis3;
+        private System.Windows.Forms.Label ergebnis4;
+        private System.Windows.Forms.Label ergebnis5;
+        private System.Windows.Forms.Label ergebnis6;
+        private System.Windows.Forms.Label ergebnis7;
+        private System.Windows.Forms.Label ergebnis8;
+        private System.Windows.Forms.Label ergebnis9;
+        private System.Windows.Forms.Label ergebnis10;
     }
 }
 

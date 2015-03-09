@@ -71,8 +71,7 @@ namespace Interface
 
         private void vss_box_ValueChanged(object sender, EventArgs e)
         {
-            double test = Signalgenerator.RegwertUout(Convert.ToInt32(vss_box.Value));
-            label8.Text = Convert.ToString(test);
+            Signalgenerator.RegwertUout(Convert.ToInt32(vss_box.Value * 1000));
         }
 
         private void voffset_box_ValueChanged(object sender, EventArgs e)
@@ -80,10 +79,19 @@ namespace Interface
             Signalgenerator.RegwertOffset(Convert.ToDouble(voffset_box.Value));
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            int i = Convert.ToInt32(numericUpDown1.Value);
-            label8.Text = Convert.ToString(Signalgenerator.output_data[i]);
+            ergebnis0.Text = Convert.ToString(Signalgenerator.output_data[0]);
+            ergebnis1.Text = Convert.ToString(Signalgenerator.output_data[1]);
+            ergebnis2.Text = Convert.ToString(Signalgenerator.output_data[2]);
+            ergebnis3.Text = Convert.ToString(Signalgenerator.output_data[3]);
+            ergebnis4.Text = Convert.ToString(Signalgenerator.output_data[4]);
+            ergebnis5.Text = Convert.ToString(Signalgenerator.output_data[5]);
+            ergebnis6.Text = Convert.ToString(Signalgenerator.output_data[6]);
+            ergebnis7.Text = Convert.ToString(Signalgenerator.output_data[7]);
+            ergebnis8.Text = Convert.ToString(Signalgenerator.output_data[8]);
+            ergebnis9.Text = Convert.ToString(Signalgenerator.output_data[9]);
+            ergebnis10.Text = Convert.ToString(Signalgenerator.output_data[10]);
         }
 
 

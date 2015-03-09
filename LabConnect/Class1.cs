@@ -18,17 +18,22 @@ namespace LabConnect
         bool rechteck = false;
         public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x01 };
         //registerwerte für die Digipotis für die Ausgangsspannung berechnen
-        public double RegwertUout(double u_amplitude)
+        public void RegwertUout(int u_amplitude_mv)
         {
-            double umax = 12, bits = 510;
+            int umax = 12000, bits = 510;
             int register1, register2;
             //berechnen des gesamtwertes
-             double ergebnis = u_amplitude / (umax / bits);
+             int ergebnis = u_amplitude_mv / (umax / bits);
             //prüfen ob grade und auf register aufteilen
+            if (510 < ergebnis)
+            {
+                ergebnis = 510;
+            }
+
             if (ergebnis%2 == 0)
             {
-                register1 = Convert.ToInt32(255 - (ergebnis / 2));
-                register2 = Convert.ToInt32(255 - (ergebnis / 2));
+                register1 = 255 - (ergebnis / 2);
+                register2 = 255 - (ergebnis / 2);
             }
             else
             {
@@ -39,7 +44,7 @@ namespace LabConnect
 
             output_data[6] = Convert.ToByte(register1);
             output_data[7] = Convert.ToByte(register2);
-            return ergebnis;
+            return;
         }
 
         //Registerwerte für die offsetspannung berechnen
