@@ -137,6 +137,7 @@
             this.manuell_frequenz.Name = "manuell_frequenz";
             this.manuell_frequenz.Size = new System.Drawing.Size(86, 20);
             this.manuell_frequenz.TabIndex = 5;
+            this.manuell_frequenz.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manuell_frequenz_KeyDown);
             // 
             // button1
             // 
@@ -293,7 +294,7 @@
             // ergebnis0
             // 
             this.ergebnis0.AutoSize = true;
-            this.ergebnis0.Location = new System.Drawing.Point(341, 13);
+            this.ergebnis0.Location = new System.Drawing.Point(290, 20);
             this.ergebnis0.Name = "ergebnis0";
             this.ergebnis0.Size = new System.Drawing.Size(53, 13);
             this.ergebnis0.TabIndex = 16;
@@ -302,7 +303,7 @@
             // ergebnis1
             // 
             this.ergebnis1.AutoSize = true;
-            this.ergebnis1.Location = new System.Drawing.Point(341, 27);
+            this.ergebnis1.Location = new System.Drawing.Point(290, 34);
             this.ergebnis1.Name = "ergebnis1";
             this.ergebnis1.Size = new System.Drawing.Size(53, 13);
             this.ergebnis1.TabIndex = 17;
@@ -311,7 +312,7 @@
             // ergebnis2
             // 
             this.ergebnis2.AutoSize = true;
-            this.ergebnis2.Location = new System.Drawing.Point(341, 65);
+            this.ergebnis2.Location = new System.Drawing.Point(290, 72);
             this.ergebnis2.Name = "ergebnis2";
             this.ergebnis2.Size = new System.Drawing.Size(53, 13);
             this.ergebnis2.TabIndex = 18;
@@ -320,7 +321,7 @@
             // ergebnis3
             // 
             this.ergebnis3.AutoSize = true;
-            this.ergebnis3.Location = new System.Drawing.Point(341, 80);
+            this.ergebnis3.Location = new System.Drawing.Point(290, 87);
             this.ergebnis3.Name = "ergebnis3";
             this.ergebnis3.Size = new System.Drawing.Size(53, 13);
             this.ergebnis3.TabIndex = 19;
@@ -329,7 +330,7 @@
             // ergebnis4
             // 
             this.ergebnis4.AutoSize = true;
-            this.ergebnis4.Location = new System.Drawing.Point(341, 93);
+            this.ergebnis4.Location = new System.Drawing.Point(290, 100);
             this.ergebnis4.Name = "ergebnis4";
             this.ergebnis4.Size = new System.Drawing.Size(53, 13);
             this.ergebnis4.TabIndex = 20;
@@ -338,7 +339,7 @@
             // ergebnis5
             // 
             this.ergebnis5.AutoSize = true;
-            this.ergebnis5.Location = new System.Drawing.Point(341, 106);
+            this.ergebnis5.Location = new System.Drawing.Point(290, 113);
             this.ergebnis5.Name = "ergebnis5";
             this.ergebnis5.Size = new System.Drawing.Size(53, 13);
             this.ergebnis5.TabIndex = 21;
@@ -347,7 +348,7 @@
             // ergebnis6
             // 
             this.ergebnis6.AutoSize = true;
-            this.ergebnis6.Location = new System.Drawing.Point(341, 132);
+            this.ergebnis6.Location = new System.Drawing.Point(290, 139);
             this.ergebnis6.Name = "ergebnis6";
             this.ergebnis6.Size = new System.Drawing.Size(53, 13);
             this.ergebnis6.TabIndex = 22;
@@ -356,7 +357,7 @@
             // ergebnis7
             // 
             this.ergebnis7.AutoSize = true;
-            this.ergebnis7.Location = new System.Drawing.Point(341, 147);
+            this.ergebnis7.Location = new System.Drawing.Point(290, 154);
             this.ergebnis7.Name = "ergebnis7";
             this.ergebnis7.Size = new System.Drawing.Size(53, 13);
             this.ergebnis7.TabIndex = 23;
@@ -365,7 +366,7 @@
             // ergebnis8
             // 
             this.ergebnis8.AutoSize = true;
-            this.ergebnis8.Location = new System.Drawing.Point(341, 177);
+            this.ergebnis8.Location = new System.Drawing.Point(290, 184);
             this.ergebnis8.Name = "ergebnis8";
             this.ergebnis8.Size = new System.Drawing.Size(53, 13);
             this.ergebnis8.TabIndex = 24;
@@ -374,7 +375,7 @@
             // ergebnis9
             // 
             this.ergebnis9.AutoSize = true;
-            this.ergebnis9.Location = new System.Drawing.Point(341, 190);
+            this.ergebnis9.Location = new System.Drawing.Point(290, 197);
             this.ergebnis9.Name = "ergebnis9";
             this.ergebnis9.Size = new System.Drawing.Size(53, 13);
             this.ergebnis9.TabIndex = 25;
@@ -383,7 +384,7 @@
             // ergebnis10
             // 
             this.ergebnis10.AutoSize = true;
-            this.ergebnis10.Location = new System.Drawing.Point(341, 221);
+            this.ergebnis10.Location = new System.Drawing.Point(290, 228);
             this.ergebnis10.Name = "ergebnis10";
             this.ergebnis10.Size = new System.Drawing.Size(59, 13);
             this.ergebnis10.TabIndex = 26;
@@ -424,7 +425,7 @@
             // ergebnis11
             // 
             this.ergebnis11.AutoSize = true;
-            this.ergebnis11.Location = new System.Drawing.Point(341, 242);
+            this.ergebnis11.Location = new System.Drawing.Point(290, 249);
             this.ergebnis11.Name = "ergebnis11";
             this.ergebnis11.Size = new System.Drawing.Size(59, 13);
             this.ergebnis11.TabIndex = 30;
@@ -434,7 +435,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 284);
+            this.ClientSize = new System.Drawing.Size(352, 284);
             this.Controls.Add(this.ergebnis11);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);

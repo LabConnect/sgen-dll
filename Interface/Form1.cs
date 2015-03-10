@@ -23,34 +23,7 @@ namespace Interface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double Frequenz, multiplikator = 1;
-                     
-            switch(manuell_multi.Text)
-            {
-                case "Hz":  multiplikator = 1;       break;
-                case "kHz": multiplikator = 1000;    break;
-                case "MHz": multiplikator = 1000000; break;
-                default:    multiplikator = 1;       break;
-            }
-            
-            try
-            {
-                Frequenz = Convert.ToDouble(manuell_frequenz.Text) * multiplikator;
-            }
-            catch
-            {
-                MessageBox.Show("Die eingegebene Frequenz muss zwischen 1Hz und 12,5Mhz liegen!");
-                return;
-            }
-                    
-            if ((Frequenz > 12500000) | (Frequenz < 1))
-            {
-                MessageBox.Show("Die eingegebene Frequenz muss zwischen 1Hz und 12,5Mhz liegen!");
-                return;
-            }
-            
-            frequenz_show.Value = Convert.ToInt32(Frequenz);
-            Signalgenerator.SetFrequency(Convert.ToInt32(Frequenz));
+            change_frequenz_UI();
         }
 
         private void frequenz_show_ValueChanged(object sender, EventArgs e)
@@ -115,7 +88,44 @@ namespace Interface
             Signalgenerator.BootData(checkBox2.Checked, checkBox1.Checked);
         }
 
+        private void manuell_frequenz_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                change_frequenz_UI();
+            }
+        }
 
-        
+        private void change_frequenz_UI()
+        {
+            double Frequenz, multiplikator = 1;
+
+            switch (manuell_multi.Text)
+            {
+                case "Hz": multiplikator = 1; break;
+                case "kHz": multiplikator = 1000; break;
+                case "MHz": multiplikator = 1000000; break;
+                default: multiplikator = 1; break;
+            }
+
+            try
+            {
+                Frequenz = Convert.ToDouble(manuell_frequenz.Text) * multiplikator;
+            }
+            catch
+            {
+                MessageBox.Show("Die eingegebene Frequenz muss zwischen 1Hz und 12,5Mhz liegen!");
+                return;
+            }
+
+            if ((Frequenz > 12500000) | (Frequenz < 1))
+            {
+                MessageBox.Show("Die eingegebene Frequenz muss zwischen 1Hz und 12,5Mhz liegen!");
+                return;
+            }
+
+            frequenz_show.Value = Convert.ToInt32(Frequenz);
+            Signalgenerator.SetFrequency(Convert.ToInt32(Frequenz));
+        }
     }
 }
