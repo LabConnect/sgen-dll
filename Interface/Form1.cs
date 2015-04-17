@@ -54,18 +54,18 @@ namespace Interface
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ergebnis0.Text = Convert.ToString(Signalgenerator.output_data[0]);
-            ergebnis1.Text = Convert.ToString(Signalgenerator.output_data[1]);
-            ergebnis2.Text = Convert.ToString(Signalgenerator.output_data[2]);
-            ergebnis3.Text = Convert.ToString(Signalgenerator.output_data[3]);
-            ergebnis4.Text = Convert.ToString(Signalgenerator.output_data[4]);
-            ergebnis5.Text = Convert.ToString(Signalgenerator.output_data[5]);
-            ergebnis6.Text = Convert.ToString(Signalgenerator.output_data[6]);
-            ergebnis7.Text = Convert.ToString(Signalgenerator.output_data[7]);
-            ergebnis8.Text = Convert.ToString(Signalgenerator.output_data[8]);
-            ergebnis9.Text = Convert.ToString(Signalgenerator.output_data[9]);
-            ergebnis10.Text = Convert.ToString(Signalgenerator.output_data[10]);
-            ergebnis11.Text = Convert.ToString(Signalgenerator.output_data[11]);
+            ergebnis0.Text = Convert.ToString(Signalgenerator.output_data[0], 16);
+            ergebnis1.Text = Convert.ToString(Signalgenerator.output_data[1], 16);
+            ergebnis2.Text = Convert.ToString(Signalgenerator.output_data[2], 16);
+            ergebnis3.Text = Convert.ToString(Signalgenerator.output_data[3], 16);
+            ergebnis4.Text = Convert.ToString(Signalgenerator.output_data[4], 16);
+            ergebnis5.Text = Convert.ToString(Signalgenerator.output_data[5], 16);
+            ergebnis6.Text = Convert.ToString(Signalgenerator.output_data[6], 16);
+            ergebnis7.Text = Convert.ToString(Signalgenerator.output_data[7], 16);
+            ergebnis8.Text = Convert.ToString(Signalgenerator.output_data[8], 16);
+            ergebnis9.Text = Convert.ToString(Signalgenerator.output_data[9], 16);
+            ergebnis10.Text = Convert.ToString(Signalgenerator.output_data[10], 16);
+            ergebnis11.Text = Convert.ToString(Signalgenerator.output_data[11], 16);
         }
 
         private void button2_Click(object sender, EventArgs e)
