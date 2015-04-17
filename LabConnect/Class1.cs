@@ -18,6 +18,7 @@ namespace LabConnect
         bool rechteck = false;
         int frequenz = 1750;
         public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x02, 0x01 };
+        public byte[] calibration_data = { 0x01, 0x7D, 0x78, 0x40, 0x00, 0x00, 0x01, 0x2C};
         //registerwerte für die Digipotis für die Ausgangsspannung berechnen
         
         public bool GetBootLoad()
@@ -58,26 +59,45 @@ namespace LabConnect
         
         public void RegwertUout(int u_amplitude_mv)
         {
-            int umax = 12000, bits = 510;
+            int bits = 512;
             int register1, register2;
-            //berechnen des gesamtwertes
-             int ergebnis = u_amplitude_mv / (umax / bits);
+            
+            //Berechnen der Verstärker-eingangsspannung aus den Kalibrierungswerten
+            int uein = (Convert.ToInt32(calibration_data[6]) * 256) + Convert.ToInt32(calibration_data[7]);
+            
+            //Benötigten Verstärkungsfaktor berrechnen
+            float relation = u_amplitude_mv / uein;
+            //nen twischnschritt, der halt sein muss, merkt man wenn man die Formel umstellt.
+            float resistance = (1 / (relation - 1));
+            //berechnet die Auflösung (~390Ohm pro bit)
+            float aufloesung = (200000 / bits);
+            //umrechnen in 2. Widerstand des Verstärkers mit dem ersten Widerstand. Das durch
+            //Ohm pro Bit teilen, damit man weis wieviel bit man raucht.
+            float zwischen = ((resistance * 100000) - 2200) / aufloesung;
+            //in int umbauen, weil es (noch) keine halben bits gibt
+            int ergebnis = Convert.ToInt32(zwischen);
+            
+            
             //prüfen ob grade und auf register aufteilen
-            if (510 < ergebnis)
+            if (bits < ergebnis)
             {
-                ergebnis = 510;
+                ergebnis = bits;
+            }
+            else if (ergebnis <= 0)
+            {
+                ergebnis = 0;
             }
 
             if (ergebnis%2 == 0)
             {
-                register1 = 255 - (ergebnis / 2);
-                register2 = 255 - (ergebnis / 2);
+                register1 = (ergebnis / 2);
+                register2 = (ergebnis / 2);
             }
             else
             {
                 ergebnis = ergebnis - 1;
-                register1 = Convert.ToInt32(255 - ((ergebnis / 2) + 1));
-                register2 = Convert.ToInt32(255 - (ergebnis / 2));
+                register1 = Convert.ToInt32((ergebnis / 2) + 1);
+                register2 = Convert.ToInt32(ergebnis / 2);
             }
 
             output_data[6] = Convert.ToByte(register1);
