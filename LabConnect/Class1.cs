@@ -63,17 +63,21 @@ namespace LabConnect
             int register1, register2;
             
             //Berechnen der Verstärker-eingangsspannung aus den Kalibrierungswerten
-            int uein = (Convert.ToInt32(calibration_data[6]) * 256) + Convert.ToInt32(calibration_data[7]);
+            float uein = (Convert.ToInt32(calibration_data[6]) * 256) + Convert.ToInt32(calibration_data[7]);
             
             //Benötigten Verstärkungsfaktor berrechnen
-            float relation = u_amplitude_mv / uein;
+            float relation = (float)u_amplitude_mv / uein;
+            
             //nen twischnschritt, der halt sein muss, merkt man wenn man die Formel umstellt.
             float resistance = (1 / (relation - 1));
+            
             //berechnet die Auflösung (~390Ohm pro bit)
             float aufloesung = (200000 / bits);
+            
             //umrechnen in 2. Widerstand des Verstärkers mit dem ersten Widerstand. Das durch
             //Ohm pro Bit teilen, damit man weis wieviel bit man raucht.
             float zwischen = ((resistance * 100000) - 2200) / aufloesung;
+            
             //in int umbauen, weil es (noch) keine halben bits gibt
             int ergebnis = Convert.ToInt32(zwischen);
             
