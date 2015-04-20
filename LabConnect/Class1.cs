@@ -18,7 +18,7 @@ namespace LabConnect
         bool rechteck = false;
         int frequenz = 1750;
         public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x02, 0x01 };
-        public byte[] calibration_data = { 0x01, 0x7D, 0x78, 0x40, 0x00, 0x00, 0x01, 0x2C};
+        public byte[] calibration_data = { 0x01, 0x7D, 0x78, 0x40, 0x00, 0x00, 0x03, 0xE8};
         //registerwerte für die Digipotis für die Ausgangsspannung berechnen
         
         public bool GetBootLoad()
@@ -66,18 +66,23 @@ namespace LabConnect
             float uein = (Convert.ToInt32(calibration_data[6]) * 256) + Convert.ToInt32(calibration_data[7]);
             
             //Benötigten Verstärkungsfaktor berrechnen
-            float relation = (float)u_amplitude_mv / uein;
-            
+            float relation = ((float)u_amplitude_mv / uein)-1;
+
+            //berechnet die Auflösung (~390Ohm pro bit)
+            float aufloesung = ((float)200000 / bits);
+
+            float zwischen = ((100000 / relation) - 2200) / aufloesung;
+
+            /*
             //nen twischnschritt, der halt sein muss, merkt man wenn man die Formel umstellt.
             float resistance = (1 / (relation - 1));
             
-            //berechnet die Auflösung (~390Ohm pro bit)
-            float aufloesung = (200000 / bits);
+            
             
             //umrechnen in 2. Widerstand des Verstärkers mit dem ersten Widerstand. Das durch
-            //Ohm pro Bit teilen, damit man weis wieviel bit man raucht.
+            //Ohm pro Bit teilen, damit man weis wieviel bit man braucht.
             float zwischen = ((resistance * 100000) - 2200) / aufloesung;
-            
+            */
             //in int umbauen, weil es (noch) keine halben bits gibt
             int ergebnis = Convert.ToInt32(zwischen);
             
