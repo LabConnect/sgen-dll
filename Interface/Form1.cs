@@ -70,7 +70,7 @@ namespace Interface
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Signalgenerator.BootData(true, true);
+            Signalgenerator.CommitData();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -126,6 +126,22 @@ namespace Interface
 
             frequenz_show.Value = Convert.ToInt32(Frequenz);
             Signalgenerator.SetFrequency(Convert.ToInt32(Frequenz));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (button3.Text == "Verbinden" && Signalgenerator.init() == true)
+            {
+                comboBox2.Enabled = false;
+                button3.Text = "Trennen";
+                button2.Enabled = true;
+            }
+            else
+            {
+                comboBox2.Enabled = true;
+                button3.Text = "Verbinden";
+                button2.Enabled = false;
+            }
         }
     }
 }

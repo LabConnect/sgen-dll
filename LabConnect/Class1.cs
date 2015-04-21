@@ -17,10 +17,22 @@ namespace LabConnect
         
         bool rechteck = false;
         int frequenz = 1750;
+        int MCLK;
+        
         public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x02, 0x01 };
-        public byte[] calibration_data = { 0x01, 0x7D, 0x78, 0x40, 0x00, 0x00, 0x03, 0xE8};
+        public byte[] calibration_data = { 0x01, 0x11, 0x01, 0x7D, 0x78, 0x40, 0x00, 0x00, 0x03, 0xE8};
+        
         //registerwerte für die Digipotis für die Ausgangsspannung berechnen
         
+        public bool init()
+        {
+            bool success = false;
+            SendUSB(/*0x00, 0x55*/);
+            MCLK = calibration_data[2] * 16777216 + calibration_data[3] * 65536 + calibration_data[4] * 256 + calibration_data[5];
+            success = true;
+            return success;
+        }
+
         public bool GetBootLoad()
         {
             bool config = false;
@@ -117,7 +129,7 @@ namespace LabConnect
         //Registerwerte für die offsetspannung berechnen
         public void RegwertOffset(double u_offset)
         {
-            float uges = 12, bits = 510;
+            float uges = 12, bits = 512;
             int register1, register2;
 
             int ergebnis = Convert.ToInt32((u_offset + 6) / (uges / bits));
@@ -165,7 +177,8 @@ namespace LabConnect
         //Frequenzregister des AD9833 berechnen
         public void SetFrequency(int frequenz_local)
         {
-            float mclk = 25000000, register_size = 268435456;
+            float mclk = MCLK;
+            float register_size = 268435456;
             float teiler = mclk / register_size;
             int f_regwert = Convert.ToInt32(frequenz_local / teiler);
             frequenz = frequenz_local;
@@ -191,9 +204,10 @@ namespace LabConnect
         }
         
         //Daten senden
-        void CommitData()
+        public void CommitData()
         {
             //this is where we call the usbfunction
+            SendUSB(/*0x02, ...krams... */);
             return;
         }
 
@@ -220,5 +234,12 @@ namespace LabConnect
                 }
             }
         }
+
+        void SendUSB()
+        {
+            return;
+        }
+
+
     }
 }
