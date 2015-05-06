@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using HidLibrary;
 
 namespace LabConnect
 {
+    
     public class USB
     {
-        
+        public void InitUSB(int vid, int pid);
+        HidLibrary.HidDevice HidDeviceList;
+        HidDevice HidDevice;
+        HidDeviceList = HidDevices.Enumerate(vid, pid);
     }
 
     public class Sgen
@@ -27,6 +33,8 @@ namespace LabConnect
         public bool init()
         {
             bool success = false;
+            LabConnect.USB USB = new LabConnect.USB();
+            USB.InitUSB(1209, 2222);
             SendUSB(/*0x00, 0x55*/);
             MCLK = calibration_data[2] * 16777216 + calibration_data[3] * 65536 + calibration_data[4] * 256 + calibration_data[5];
             success = true;
