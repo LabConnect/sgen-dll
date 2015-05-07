@@ -11,10 +11,12 @@ namespace LabConnect
     
     public class USB
     {
-        public void InitUSB(int vid, int pid);
-        HidLibrary.HidDevice HidDeviceList;
-        HidDevice HidDevice;
-        HidDeviceList = HidDevices.Enumerate(vid, pid);
+        public void InitUSB(int vid, int pid)
+        {
+            HidLibrary.HidDevice[] HidDeviceList;
+            HidDevice HidDevice;
+            HidDeviceList = HidDevices.Enumerate(0x1209, 0x2222);
+        }
     }
 
     public class Sgen
