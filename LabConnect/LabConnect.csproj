@@ -43,6 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Class2.cs" />
+    <Compile Include="DeviceManagement.cs" />
+    <Compile Include="DeviceManagementDeclarations.cs" />
+    <Compile Include="FileIODeclarations.cs" />
+    <Compile Include="Hid.cs" />
+    <Compile Include="HidDeclarations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

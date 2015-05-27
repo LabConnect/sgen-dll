@@ -4,49 +4,79 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using HidLibrary;
+
 
 namespace LabConnect
 {
     
     public class USB
     {
-        public void InitUSB(int vid, int pid)
+        GenericHid.FindHid DeviceHandle = new GenericHid.FindHid();
+        
+        public bool InitUSB(int vid, int pid)
         {
-            HidLibrary.HidDevice[] HidDeviceList;
-            HidDevice HidDevice;
-            HidDeviceList = HidDevices.Enumerate(0x1209, 0x2222);
+            
+            bool enumerated = false;
+            enumerated = DeviceHandle.enumerate(vid, pid);
+            return enumerated;
+        }
+
+        public bool SendData(byte[] Message)
+        {
+            bool success = false;
+            if (!DeviceHandle._hidHandle.IsClosed && !DeviceHandle._hidHandle.IsInvalid)
+            {
+                success = DeviceHandle._myHid.SendOutputReportViaControlTransfer(DeviceHandle._hidHandle, Message);
+            }
+            return success;
+        }
+
+        public bool GetData(ref byte[] buffer)
+        {
+            buffer = new Byte[DeviceHandle._myHid.Capabilities.InputReportByteLength];
+            bool success = false;
+
+            success = DeviceHandle._myHid.GetInputReportViaControlTransfer(DeviceHandle._hidHandle, ref buffer);
+
+            return success;
         }
     }
 
     public class Sgen
     {
         //definition der klassenvariablen
-        
+        LabConnect.USB USB = new LabConnect.USB();
         bool rechteck = false;
         int frequenz = 1750;
         int MCLK;
         
         public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x02, 0x01 };
-        public byte[] calibration_data = { 0x01, 0x11, 0x01, 0x7D, 0x78, 0x40, 0x00, 0x00, 0x03, 0xE8};
+        public byte[] calibration_data = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
         
         //registerwerte für die Digipotis für die Ausgangsspannung berechnen
         
         public bool init()
         {
             bool success = false;
-            LabConnect.USB USB = new LabConnect.USB();
-            USB.InitUSB(1209, 2222);
-            SendUSB(/*0x00, 0x55*/);
-            MCLK = calibration_data[2] * 16777216 + calibration_data[3] * 65536 + calibration_data[4] * 256 + calibration_data[5];
-            success = true;
+           
+            
+            int vid = 4617;
+            int pid = 8738;
+
+            success = USB.InitUSB(vid, pid);
+            if (success)
+            {
+                ConfigRequest(ref calibration_data);
+                MCLK = calibration_data[2] * 16777216 + calibration_data[3] * 65536 + calibration_data[4] * 256 + calibration_data[5];
+            }
+            
             return success;
         }
 
         public bool GetBootLoad()
         {
             bool config = false;
-            if ((output_data[11] & 0xF0) == 0x10)
+            if ((calibration_data[1] & 0xF0) == 0x10)
             {
                 config = true;
             }
@@ -214,10 +244,18 @@ namespace LabConnect
         }
         
         //Daten senden
-        public void CommitData()
+        public void SetCommand()
         {
-            //this is where we call the usbfunction
-            SendUSB(/*0x02, ...krams... */);
+            byte[] Data = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+            for (int i = 0; i < 12; i++)
+            {
+                Data[i + 1] = output_data[i];
+            }
+
+            Data[0] = 0x01;
+            USB.SendData(Data);
+
             return;
         }
 
@@ -245,9 +283,38 @@ namespace LabConnect
             }
         }
 
-        void SendUSB()
+        void ConfigRequest(ref byte[] ConfigData)
         {
+            //Config Request senden
+            byte[] Message = { 0x00, 0x00, 0x55, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            USB.SendData(Message);
+            byte[] buffer = null;
+            USB.GetData(ref buffer);
+            int offset = 3;
+            
+            if (buffer[2] == 0x10)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    ConfigData[i] = buffer[i + offset];
+                }
+            }
+            
             return;
+        }
+
+        bool GetErrors()
+        {
+            bool success = false;
+            byte[] Message = { 0x00, 0x03 };
+            USB.SendData(Message);
+            USB.GetData(ref Message);
+
+            if (Message[4] == 0x00)
+            {
+                success = true;
+            }
+            return success;
         }
 
 

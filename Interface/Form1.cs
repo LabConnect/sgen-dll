@@ -18,7 +18,6 @@ namespace Interface
         public Form1()
         {
             InitializeComponent();
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -70,7 +69,7 @@ namespace Interface
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Signalgenerator.CommitData();
+            Signalgenerator.SetCommand();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -134,13 +133,14 @@ namespace Interface
             {
                 comboBox2.Enabled = false;
                 button3.Text = "Trennen";
-                button2.Enabled = true;
+                groupBox1.Enabled = true;
+                checkBox1.Checked = Signalgenerator.GetBootLoad();
             }
             else
             {
                 comboBox2.Enabled = true;
                 button3.Text = "Verbinden";
-                button2.Enabled = false;
+                groupBox1.Enabled = false;
             }
         }
     }
