@@ -135,13 +135,23 @@ namespace Interface
                 button3.Text = "Trennen";
                 groupBox1.Enabled = true;
                 checkBox1.Checked = Signalgenerator.GetBootLoad();
+                seriennummer1.Text = Convert.ToString(Signalgenerator.calibration_data[0]);
+                MCLK1.Text = Convert.ToString(Signalgenerator.MCLK);
             }
             else
             {
                 comboBox2.Enabled = true;
                 button3.Text = "Verbinden";
                 groupBox1.Enabled = false;
+                seriennummer1.Text = "0";
+                MCLK1.Text = "0";
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            byte errorcode = Signalgenerator.GetErrors();
+            MessageBox.Show(Convert.ToString(errorcode,16));
         }
     }
 }

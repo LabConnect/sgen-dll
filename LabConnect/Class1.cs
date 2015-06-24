@@ -48,7 +48,7 @@ namespace LabConnect
         LabConnect.USB USB = new LabConnect.USB();
         bool rechteck = false;
         int frequenz = 1750;
-        int MCLK;
+        public int MCLK;
         
         public byte[] output_data = { 0x20, 0x00, 0x66, 0x49, 0x01, 0x40, 0xD4, 0xD5, 0x80, 0x7F, 0x02, 0x01 };
         public byte[] calibration_data = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -66,7 +66,7 @@ namespace LabConnect
             success = USB.InitUSB(vid, pid);
             if (success)
             {
-                ConfigRequest(ref calibration_data);
+                success = ConfigRequest(ref calibration_data);
                 MCLK = calibration_data[2] * 16777216 + calibration_data[3] * 65536 + calibration_data[4] * 256 + calibration_data[5];
             }
             
@@ -246,14 +246,14 @@ namespace LabConnect
         //Daten senden
         public void SetCommand()
         {
-            byte[] Data = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+            byte[] Data = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
             for (int i = 0; i < 12; i++)
             {
-                Data[i + 1] = output_data[i];
+                Data[i + 2] = output_data[i];
             }
 
-            Data[0] = 0x01;
+            Data[1] = 0x01;
             USB.SendData(Data);
 
             return;
@@ -283,13 +283,20 @@ namespace LabConnect
             }
         }
 
-        void ConfigRequest(ref byte[] ConfigData)
+        bool ConfigRequest(ref byte[] ConfigData)
         {
             //Config Request senden
             byte[] Message = { 0x00, 0x00, 0x55, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-            USB.SendData(Message);
+            
+            if (!(USB.SendData(Message)))
+            {
+                return false;
+            }
             byte[] buffer = null;
-            USB.GetData(ref buffer);
+            if (!(USB.GetData(ref buffer)))
+            {
+                return false;
+            }
             int offset = 3;
             
             if (buffer[2] == 0x10)
@@ -300,21 +307,19 @@ namespace LabConnect
                 }
             }
             
-            return;
+            return true;
         }
 
-        bool GetErrors()
+        public byte GetErrors()
         {
-            bool success = false;
+            byte error = 0x00;
             byte[] Message = { 0x00, 0x03 };
             USB.SendData(Message);
             USB.GetData(ref Message);
 
-            if (Message[4] == 0x00)
-            {
-                success = true;
-            }
-            return success;
+            error = Message[4];
+            
+            return error;
         }
 
 

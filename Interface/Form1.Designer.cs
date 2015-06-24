@@ -65,6 +65,11 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.seriennummer1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.MCLK1 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.frequenz_show)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vss_box)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.voffset_box)).BeginInit();
@@ -493,11 +498,62 @@
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(15, 344);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 13);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "Seriennummer:";
+            // 
+            // seriennummer1
+            // 
+            this.seriennummer1.AutoSize = true;
+            this.seriennummer1.Location = new System.Drawing.Point(92, 344);
+            this.seriennummer1.Name = "seriennummer1";
+            this.seriennummer1.Size = new System.Drawing.Size(13, 13);
+            this.seriennummer1.TabIndex = 36;
+            this.seriennummer1.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(158, 344);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "MCLK:";
+            // 
+            // MCLK1
+            // 
+            this.MCLK1.AutoSize = true;
+            this.MCLK1.Location = new System.Drawing.Point(203, 344);
+            this.MCLK1.Name = "MCLK1";
+            this.MCLK1.Size = new System.Drawing.Size(13, 13);
+            this.MCLK1.TabIndex = 38;
+            this.MCLK1.Text = "0";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(265, 339);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 39;
+            this.button5.Text = "GetError";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 348);
+            this.ClientSize = new System.Drawing.Size(418, 366);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.MCLK1);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.seriennummer1);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.comboBox2);
@@ -565,6 +621,11 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label seriennummer1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label MCLK1;
+        private System.Windows.Forms.Button button5;
     }
 }
 
